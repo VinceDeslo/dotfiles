@@ -11,6 +11,7 @@ This repo is being kept public in order to share my setup if needed and to menta
 - [ ] gh 
 - [ ] zsh
 - [ ] oh-my-zsh
+- [x] starship
 - [ ] neovim
 - [ ] jq
 - [ ] yq
@@ -24,3 +25,9 @@ This repo is being kept public in order to share my setup if needed and to menta
 - [ ] kubectl
 - [ ] helm
 - [ ] terraform
+
+### Update
+
+```
+home-manager switch --flake .
+```
