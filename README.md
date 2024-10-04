@@ -8,18 +8,18 @@ This repo is being kept public in order to share my setup if needed and to menta
 
 ### Packages
 - [ ] git
-- [ ] gh 
+- [x] gh
 - [ ] zsh
-- [ ] oh-my-zsh
 - [x] starship
 - [ ] neovim
-- [ ] jq
-- [ ] yq
-- [ ] exa
-- [ ] ripgrep
-- [ ] bat
-- [ ] go
-- [ ] rust
+- [x] jq
+- [x] yq
+- [x] eza
+- [x] ripgrep
+- [x] bat
+- [x] fzf
+- [x] fnm
+- [x] tokei
 - [ ] aws-cli 
 - [ ] google-cloud-sdk
 - [ ] kubectl

@@ -40,7 +40,6 @@
 			# Language/tool specific features
 			kubernetes = {
 				disabled = false;
-				detect_folders = ["helm"];
 				format = "[$context]($style)";
 				style = "bright-blue";
 			};
