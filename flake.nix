@@ -16,7 +16,12 @@
 		homeConfigurations = {
 			"vince" = home-manager.lib.homeManagerConfiguration {
 				# TODO: define this with flake-utils or flake-parts instead
-				pkgs = import nixpkgs { system = "aarch64-darwin"; };
+				pkgs = import nixpkgs { 
+                    system = "aarch64-darwin"; 
+                    config = { 
+                        allowUnfree = true; 
+                    }; 
+                };
 				modules = [ ./home.nix ];
 				extraSpecialArgs = { inherit pdeconfig; };
 			};
