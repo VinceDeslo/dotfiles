@@ -29,6 +29,7 @@ in {
         fzf
         tokei
         just
+        glow
 
         # Temporary language tooling
         # since not all projects on which I work have a flake
