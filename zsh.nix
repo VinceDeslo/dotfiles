@@ -31,6 +31,8 @@
 
             source <(kubectl completion zsh)
             source <(helm completion zsh)
+
+            eval "$(fnm env --use-on-cd --shell zsh)"
         '';
     };
 }
