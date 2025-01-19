@@ -18,6 +18,7 @@
             print-path="echo $PATH | tr : '\n'";
             get-uuid="uuidgen | tr A-Z a-z | pbcopy";
             branch-cleanup="git branch | grep -v 'main' | xargs git branch -D";
+            nixd="nix develop -c $SHELL";
         };
         initExtra = ''
             export GPG_TTY=$(tty)
