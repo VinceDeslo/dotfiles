@@ -8,7 +8,7 @@
 			right_format = "$kubernetes";
 
 			nix_shell = {
-				symbol = "▣";
+				symbol = " ";
 				format = "[$symbol$name]($style) ";
 				style = "bright-blue bold";
 			};
