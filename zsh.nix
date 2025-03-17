@@ -32,8 +32,15 @@
 
             source <(kubectl completion zsh)
             source <(helm completion zsh)
-
-            eval "$(fnm env --use-on-cd --shell zsh)"
         '';
+        plugins = [
+            {
+                name = "snyk-work";
+                src = builtins.fetchGit {
+                    url = "git@github.com:VinceDeslo/snyk-work-zsh-plugin.git";
+                    rev = "9178be1c902d6ccf8c2500ec5f94403c62a75b95";
+                };
+            }
+        ];
     };
 }
