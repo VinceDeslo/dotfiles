@@ -30,6 +30,7 @@ in {
         tokei
         just
         glow
+        ngrok
 
         # Temporary language tooling
         # since not all projects on which I work have a flake
