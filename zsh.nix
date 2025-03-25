@@ -19,6 +19,11 @@
             get-uuid="uuidgen | tr A-Z a-z | pbcopy";
             branch-cleanup="git branch | grep -v 'main' | xargs git branch -D";
             nixd="nix develop -c $SHELL";
+            gs="git status";
+            ga="git add .";
+            gc="git commit";
+            gp="git push";
+            gl="git log --oneline -n 10 --pretty=format:'%C(yellow)%H%C(reset) - %s %C(cyan)(%an)%C(reset)' --color=always";
         };
         initExtra = ''
             export GPG_TTY=$(tty)
