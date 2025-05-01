@@ -45,5 +45,8 @@ in {
 
         # AI tools
         aichat
+
+        # Secrets
+        _1password-cli
     ];
 }
