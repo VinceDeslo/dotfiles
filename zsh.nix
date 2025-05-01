@@ -37,13 +37,14 @@
 
             source <(kubectl completion zsh)
             source <(helm completion zsh)
+            source <(op completion zsh)
         '';
         plugins = [
             {
                 name = "snyk-work";
                 src = builtins.fetchGit {
                     url = "git@github.com:VinceDeslo/snyk-work-zsh-plugin.git";
-                    rev = "9178be1c902d6ccf8c2500ec5f94403c62a75b95";
+                    rev = "00affd4f27436fc07f828dcd27ab6a728b3b87fb";
                 };
             }
         ];
