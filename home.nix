@@ -42,5 +42,8 @@ in {
         kubectl
         kubernetes-helm
         terraform
+
+        # AI tools
+        aichat
     ];
 }
