@@ -25,7 +25,7 @@
             gp="git push";
             gl="git log --oneline -n 10 --pretty=format:'%C(yellow)%H%C(reset) - %s %C(cyan)(%an)%C(reset)' --color=always";
         };
-        initExtra = ''
+        initContent = ''
             export GPG_TTY=$(tty)
 
             # Nix
