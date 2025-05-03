@@ -35,6 +35,8 @@
 
             . "$HOME/.cargo/env"
 
+            eval "$(direnv hook zsh)"
+
             source <(kubectl completion zsh)
             source <(helm completion zsh)
             source <(op completion zsh)
