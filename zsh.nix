@@ -41,6 +41,7 @@
             source <(helm completion zsh)
             source <(op completion zsh)
             source <(gh completion -s zsh)
+            source <(just --completions zsh)
         '';
         plugins = [
             {
