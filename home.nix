@@ -49,5 +49,8 @@ in {
 
         # Secrets
         _1password-cli
+
+        # Data
+        # snowsql -- need to update upstream support for arm64
     ];
 }

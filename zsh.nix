@@ -24,6 +24,7 @@
             gc="git commit";
             gp="git push";
             gl="git log --oneline -n 10 --pretty=format:'%C(yellow)%H%C(reset) - %s %C(cyan)(%an)%C(reset)' --color=always";
+            grv="gh repo view -w";
         };
         initContent = ''
             export GPG_TTY=$(tty)
