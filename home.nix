@@ -1,5 +1,6 @@
-{pkgs, pdeconfig, ...}: let
+{pkgs, pdeconfig, kin, ...}: let
   system = pkgs.system;
+  kinCli = kin.packages.${system}.default;
 in {
     imports = [
         ./zsh.nix
@@ -43,6 +44,7 @@ in {
         kubectl
         kubernetes-helm
         terraform
+        kinCli # Custom
 
         # AI tools
         aichat
