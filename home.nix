@@ -54,6 +54,7 @@ in {
 
         # Data
         # snowsql -- need to update upstream support for arm64
+        confluent-cli
 
         # Docs
         mdbook
