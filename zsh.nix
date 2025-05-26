@@ -23,6 +23,7 @@
             ga="git add .";
             gc="git commit";
             gp="git push";
+            gd="git diff";
             gl="git log --oneline -n 10 --pretty=format:'%C(yellow)%H%C(reset) - %s %C(cyan)(%an)%C(reset)' --color=always";
             grv="gh repo view -w";
         };
