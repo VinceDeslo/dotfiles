@@ -13,18 +13,28 @@
 
 	outputs = {nixpkgs, home-manager, pdeconfig, kin, ...}: {
 		defaultPackage.aarch64-darwin = home-manager.defaultPackage.aarch64-darwin;
+        defaultPackage.x86_64-linux = home-manager.defaultPackage.x86_64-linux;
 		
 		homeConfigurations = {
-			"vince" = home-manager.lib.homeManagerConfiguration {
-				# TODO: define this with flake-utils or flake-parts instead
+			darwin = home-manager.lib.homeManagerConfiguration {
 				pkgs = import nixpkgs { 
                     system = "aarch64-darwin"; 
+                    config = {
+                        allowUnfree = true; 
+                    }; 
+                };
+				modules = [ ./hosts/darwin/home.nix ];
+				extraSpecialArgs = { inherit pdeconfig kin; };
+			};
+			linux = home-manager.lib.homeManagerConfiguration {
+				pkgs = import nixpkgs { 
+                    system = "x86_64-linux"; 
                     config = { 
                         allowUnfree = true; 
                     }; 
                 };
-				modules = [ ./home.nix ];
-				extraSpecialArgs = { inherit pdeconfig kin; };
+				modules = [ ./hosts/linux/home.nix ];
+				extraSpecialArgs = { inherit pdeconfig; };
 			};
 		};
 	};

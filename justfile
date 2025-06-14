@@ -4,5 +4,8 @@ __default:
 update:
     nix flake update
 
-switch:
-    home-manager switch --flake .
+darwin:
+    home-manager switch --flake .#darwin
+
+linux:
+    home-manager switch --flake .#linux
