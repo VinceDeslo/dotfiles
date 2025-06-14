@@ -8,6 +8,8 @@ This repo is being kept public in order to share my setup if needed and to menta
 
 ### Update
 
-```
-just switch
+```shell
+just update # update lockfile to pull deps (nvim conf, etc.)
+just darwin # update my work laptop
+just linux # update my personal system
 ```
