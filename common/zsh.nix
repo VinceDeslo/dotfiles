@@ -50,7 +50,7 @@
                 name = "snyk-work";
                 src = builtins.fetchGit {
                     url = "git@github.com:VinceDeslo/snyk-work-zsh-plugin.git";
-                    rev = "00affd4f27436fc07f828dcd27ab6a728b3b87fb";
+                    rev = "ac1c4d5bdbd1c61bc4fac5d9c87baac4665ac932";
                 };
             }
         ];
