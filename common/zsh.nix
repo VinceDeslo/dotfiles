@@ -35,8 +35,6 @@
                 . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
             fi
 
-            . "$HOME/.cargo/env"
-
             eval "$(direnv hook zsh)"
 
             source <(kubectl completion zsh)
@@ -45,14 +43,6 @@
             source <(gh completion -s zsh)
             source <(just --completions zsh)
         '';
-        plugins = [
-            {
-                name = "snyk-work";
-                src = builtins.fetchGit {
-                    url = "git@github.com:VinceDeslo/snyk-work-zsh-plugin.git";
-                    rev = "ac1c4d5bdbd1c61bc4fac5d9c87baac4665ac932";
-                };
-            }
-        ];
+        plugins = [];
     };
 }

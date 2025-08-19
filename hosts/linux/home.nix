@@ -14,5 +14,7 @@ in {
 
     programs.neovim = pdeconfig.lib.mkHomeManager {inherit system;};
 
-    home.packages = commonPkgs;
+    home.packages = commonPkgs ++ (with pkgs; [
+        go
+    ]);
 }
