@@ -1,4 +1,5 @@
 {pkgs}: with pkgs; [
+    zoxide
     bat
     direnv
     eza

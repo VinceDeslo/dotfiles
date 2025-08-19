@@ -36,6 +36,7 @@
             fi
 
             eval "$(direnv hook zsh)"
+            eval "$(zoxide init zsh)"
 
             source <(kubectl completion zsh)
             source <(helm completion zsh)
