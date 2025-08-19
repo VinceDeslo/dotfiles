@@ -8,6 +8,7 @@
             ls="eza -la";
             cat="bat";
             dots="nvim ~/dotfiles";
+            ghost-conf="nvim ~/.config/ghostty/config";
             hms="home-manager switch --flake .";
             k="kubectl";
             klocal="kubectl config use-context docker-desktop";
