@@ -16,5 +16,6 @@ in {
 
     home.packages = commonPkgs ++ (with pkgs; [
         go
+        delve
     ]);
 }

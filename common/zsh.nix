@@ -5,6 +5,7 @@
         enableCompletion = true; 
         syntaxHighlighting.enable = true;
         shellAliases = {
+            v="nvim";
             ls="eza -la";
             cat="bat";
             dots="nvim ~/dotfiles";
