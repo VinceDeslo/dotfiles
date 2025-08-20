@@ -45,6 +45,15 @@
             source <(op completion zsh)
             source <(gh completion -s zsh)
             source <(just --completions zsh)
+
+            autoload -Uz compinit && compinit
+            autoload bashcompinit && bashcompinit
+            complete -C '${pkgs.awscli2}/bin/aws_completer' aws
+
+            function aws-ctx() {
+                export AWS_PROFILE="$(aws configure list-profiles | fzf)"
+                echo "Switched to AWS profile ""$AWS_PROFILE""."
+            }
         '';
         plugins = [];
     };
