@@ -3,4 +3,5 @@
     kubectl
     kubernetes-helm
     terraform
+    infracost
 ]
