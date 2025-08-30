@@ -8,10 +8,9 @@
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 		pdeconfig.url = "github:VinceDeslo/pdeconfig.nvim";
-        kin.url = "github:VinceDeslo/kin";
 	};
 
-	outputs = {nixpkgs, home-manager, pdeconfig, kin, ...}: {
+	outputs = {nixpkgs, home-manager, pdeconfig, ...}: {
 		defaultPackage.aarch64-darwin = home-manager.defaultPackage.aarch64-darwin;
         defaultPackage.x86_64-linux = home-manager.defaultPackage.x86_64-linux;
 		
@@ -24,7 +23,7 @@
                     }; 
                 };
 				modules = [ ./hosts/darwin/home.nix ];
-				extraSpecialArgs = { inherit pdeconfig kin; };
+				extraSpecialArgs = { inherit pdeconfig; };
 			};
 			linux = home-manager.lib.homeManagerConfiguration {
 				pkgs = import nixpkgs { 
