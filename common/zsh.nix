@@ -57,6 +57,14 @@
                 echo "Switched to AWS profile ""$AWS_PROFILE""."
             }
         '';
-        plugins = [];
+        plugins = [
+		{
+			name = "ic-work";
+			src = builtins.fetchGit {
+				url = "git@github.com:VinceDeslo/ic-work-zsh-plugin.git";
+				rev = "16eefbcbc46dbbed94fa66bf558872b9a7fd2b51";
+			};
+		}
+	];
     };
 }
