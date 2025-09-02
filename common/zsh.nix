@@ -39,12 +39,14 @@
 
             eval "$(direnv hook zsh)"
             eval "$(zoxide init zsh)"
+	    eval "$(fnm env --use-on-cd --shell zsh)"
 
             source <(kubectl completion zsh)
             source <(helm completion zsh)
             source <(op completion zsh)
             source <(gh completion -s zsh)
             source <(just --completions zsh)
+	    source <(fnm completions --shell zsh)
 
             autoload -Uz compinit && compinit
             autoload bashcompinit && bashcompinit
