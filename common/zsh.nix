@@ -62,7 +62,7 @@
 			name = "ic-work";
 			src = builtins.fetchGit {
 				url = "git@github.com:VinceDeslo/ic-work-zsh-plugin.git";
-				rev = "16eefbcbc46dbbed94fa66bf558872b9a7fd2b51";
+				rev = "d5a9ff06e5e9b47caeaaa7104ba61d174812e8e5";
 			};
 		}
 	];
