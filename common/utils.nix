@@ -1,5 +1,4 @@
 {pkgs}: with pkgs; [
-    zoxide
     bat
     direnv
     eza
@@ -7,8 +6,11 @@
     glow
     jq
     just
+    jwt-cli
     ngrok
     ripgrep
     tokei
+    tree
     yq
+    zoxide
 ]
