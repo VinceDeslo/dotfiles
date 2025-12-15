@@ -3,4 +3,5 @@
     protoc-gen-go
     protoc-gen-es
     buf
+    pgformatter
 ]
