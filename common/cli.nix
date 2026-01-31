@@ -1,5 +1,6 @@
-{pkgs}: with pkgs; [
-    _1password-cli
-    confluent-cli
-    gh
+{pkgs}:
+with pkgs; [
+  _1password-cli
+  confluent-cli
+  gh
 ]

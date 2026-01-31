@@ -1,6 +1,7 @@
-{pkgs}: with pkgs; [
-    zsh
-    git
-    starship
-    gh
+{pkgs}:
+with pkgs; [
+  zsh
+  git
+  starship
+  gh
 ]

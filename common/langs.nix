@@ -1,16 +1,20 @@
-{pkgs}: with pkgs; [
-    # Rust
-    cargo
-    clippy
-    rustc
-    rust-analyzer
-    rustfmt
+{pkgs}:
+with pkgs; [
+  # Rust
+  cargo
+  clippy
+  rustc
+  rust-analyzer
+  rustfmt
 
-    # Golang
-    go
-    golangci-lint
-    delve
+  # Golang
+  go
+  golangci-lint
+  delve
 
-    # TS/JS
-    fnm
+  # Nix
+  alejandra
+
+  # TS/JS
+  fnm
 ]

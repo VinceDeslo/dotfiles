@@ -1,4 +1,5 @@
-{pkgs}: with pkgs; [
-    mdbook
-    mdbook-mermaid
+{pkgs}:
+with pkgs; [
+  mdbook
+  mdbook-mermaid
 ]

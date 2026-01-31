@@ -1,5 +1,6 @@
-{pkgs}: with pkgs; [
-    claude-code
-    opencode
-    ollama
+{pkgs}:
+with pkgs; [
+  claude-code
+  opencode
+  ollama
 ]
