@@ -1,4 +1,5 @@
 {pkgs}: with pkgs; [
-    aichat
     claude-code
+    opencode
+    ollama
 ]

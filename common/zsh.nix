@@ -28,6 +28,8 @@
             gd="git diff";
             gl="git log --oneline -n 10 --pretty=format:'%C(yellow)%H%C(reset) - %s %C(cyan)(%an)%C(reset)' --color=always";
             grv="gh repo view -w";
+            oc="opencode";
+            oc-conf="nvim ~/.config/opencode/opencode.json";
         };
         initContent = ''
             export GPG_TTY=$(tty)
@@ -56,13 +58,15 @@
                 export AWS_PROFILE="$(aws configure list-profiles | fzf)"
                 echo "Switched to AWS profile ""$AWS_PROFILE""."
             }
+
+            export GITHUB_TOKEN=$(gh auth token)
         '';
         plugins = [
 		{
 			name = "ic-work";
 			src = builtins.fetchGit {
 				url = "git@github.com:VinceDeslo/ic-work-zsh-plugin.git";
-				rev = "0953bb16c1f818f2c62ff858586758e7c390b673";
+				rev = "af8816e3e7e41469b65bfd9864e825c176143a8f";
 			};
 		}
 	];
