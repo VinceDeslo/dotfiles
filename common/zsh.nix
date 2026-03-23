@@ -59,6 +59,7 @@
           echo "Switched to AWS profile ""$AWS_PROFILE""."
       }
 
+      export PATH="$HOME/.local/bin:$PATH"
       export GITHUB_TOKEN=$(gh auth token)
     '';
     plugins = [
@@ -66,7 +67,7 @@
         name = "ic-work";
         src = builtins.fetchGit {
           url = "git@github.com:VinceDeslo/ic-work-zsh-plugin.git";
-          rev = "af8816e3e7e41469b65bfd9864e825c176143a8f";
+          rev = "33482155fc7e6b9b84c1affcfc4648adcce49832";
         };
       }
     ];

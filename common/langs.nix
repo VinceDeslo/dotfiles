@@ -17,4 +17,7 @@ with pkgs; [
 
   # TS/JS
   fnm
+
+  # Python
+  uv
 ]
