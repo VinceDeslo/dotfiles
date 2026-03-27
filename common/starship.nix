@@ -5,7 +5,7 @@
     settings = {
       add_newline = false;
       format = "$nix_shell$directory$git_branch$git_commit$git_state$git_status$character";
-      right_format = "$kubernetes";
+      right_format = "$aws$kubernetes";
 
       nix_shell = {
         symbol = " ";
@@ -37,11 +37,19 @@
         error_symbol = "[✖](red bold)";
       };
 
-      # Language/tool specific features
+      aws = {
+        format = "[$profile( \\($region\\))]($style) ";
+        style = "dimmed white";
+      };
+
       kubernetes = {
         disabled = false;
-        format = "[$context]($style)";
+        format = "[$symbol$context]($style)";
         style = "bright-blue";
+        contexts = [
+          { context_pattern = ".*:(?P<c>cluster/.*prod.*)"; context_alias = "$c"; style = "red bold"; }
+          { context_pattern = ".*:(?P<c>cluster/.*dev.*)"; context_alias = "$c"; style = "bright-green"; }
+        ];
       };
     };
   };
