@@ -49,6 +49,7 @@
       source <(gh completion -s zsh)
       source <(just --completions zsh)
       source <(fnm completions --shell zsh)
+      source <(wt config shell init zsh)
 
       autoload -Uz compinit && compinit
       autoload bashcompinit && bashcompinit
@@ -67,7 +68,7 @@
         name = "ic-work";
         src = builtins.fetchGit {
           url = "git@github.com:VinceDeslo/ic-work-zsh-plugin.git";
-          rev = "33482155fc7e6b9b84c1affcfc4648adcce49832";
+          rev = "bbe9ed159acf23722f4e47c565f0ba58347215cf";
         };
       }
     ];
