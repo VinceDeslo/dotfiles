@@ -5,4 +5,5 @@ with pkgs; [
   protoc-gen-es
   buf
   pgformatter
+  duckdb
 ]
