@@ -28,6 +28,9 @@
       gds = "git diff --staged";
       gl = "git log --oneline -n 10 --pretty=format:'%C(yellow)%H%C(reset) - %s %C(cyan)(%an)%C(reset)' --color=always";
       grv = "gh repo view -w";
+      wtl = "wt list";
+      wts = "wt switch";
+      wtr = "wt remove";
       oc = "opencode";
       oc-conf = "nvim ~/.config/opencode/opencode.json";
     };
