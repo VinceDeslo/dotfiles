@@ -9,12 +9,13 @@
       ls = "eza -la";
       cat = "bat";
       dots = "nvim ~/dotfiles";
-      ghost-conf = "nvim ~/.config/ghostty/config";
+      gconf = "v ~/.config/ghostty/config";
       hms = "home-manager switch --flake .";
       k = "kubectl";
-      klocal = "kubectl config use-context docker-desktop";
-      aws-conf = "nvim ~/.aws/config";
-      aws-creds = "nvim ~/.aws/credentials";
+      kctx = "kubectx";
+      kconf = "v ~/.kube/config";
+      aws-conf = "v ~/.aws/config";
+      aws-creds = "v ~/.aws/credentials";
       print-path = "echo $PATH | tr : '\n'";
       get-uuid = "uuidgen | tr A-Z a-z | pbcopy";
       branch-cleanup = "git branch | grep -v 'main' | xargs git branch -D";
@@ -31,6 +32,7 @@
       wtl = "wt list";
       wts = "wt switch";
       wtr = "wt remove";
+      c = "claude";
       oc = "opencode";
       oc-conf = "nvim ~/.config/opencode/opencode.json";
     };
@@ -62,6 +64,14 @@
           export AWS_PROFILE="$(aws configure list-profiles | fzf)"
           echo "Switched to AWS profile ""$AWS_PROFILE""."
       }
+
+      function select-alias() {
+        local sel=$(alias | fzf -d '=' --nth=1 | cut -d= -f1)
+        [[ -n $sel ]] && LBUFFER+="$sel"
+        zle reset-prompt
+      }
+      zle -N fzf-alias-insert
+      bindkey '^Xa' select-alias # Ctrl-X then a
 
       export PATH="$HOME/.local/bin:$PATH"
       export GITHUB_TOKEN=$(gh auth token)

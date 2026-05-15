@@ -6,6 +6,7 @@ with pkgs; [
   kubectl
   kubernetes-helm
   kustomize
+  kubectx
   terraform
   tilt
 ]
