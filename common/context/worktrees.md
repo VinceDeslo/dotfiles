@@ -1,4 +1,4 @@
-# WT - Personal worktree setup
+# Worktree usage 
 
 **Purpose**: Managing git worktrees for all my projects
 **Tooling**: [wt](https://github.com/max-sixty/worktrunk)

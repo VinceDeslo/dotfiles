@@ -1,4 +1,5 @@
 {...}: {
-  home.file.".claude/CLAUDE.md".source = ./content/CLAUDE.md;
-  home.file.".claude/WT.md".source = ./content/WT.md;
+  home.file.".claude/CLAUDE.md".source = ./context/CLAUDE.md;
+  home.file.".claude/worktrees.md".source = ./context/worktrees.md;
+  home.file.".claude/locations.md".source = ./context/locations.md;
 }

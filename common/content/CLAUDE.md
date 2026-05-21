@@ -1,2 +1,0 @@
-@RTK.md
-@WT.md
