@@ -8,5 +8,6 @@ with pkgs; [
   kustomize
   kubectx
   terraform
+  terraform-docs
   tilt
 ]
