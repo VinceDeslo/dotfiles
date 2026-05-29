@@ -19,6 +19,7 @@
       print-path = "echo $PATH | tr : '\n'";
       get-uuid = "uuidgen | tr A-Z a-z | pbcopy";
       branch-cleanup = "git branch | grep -v 'main' | xargs git branch -D";
+      brainsync = ''cd ~/repos/brain && git add -A && git commit -m "notes $(date +%F)" && git push'';
       nixd = "nix develop -c $SHELL";
       gs = "git status";
       ga = "git add .";
@@ -81,7 +82,7 @@
         name = "ic-work";
         src = builtins.fetchGit {
           url = "git@github.com:VinceDeslo/ic-work-zsh-plugin.git";
-          rev = "27bc19195ac991e7d1d0ee7f4258106974419bd9";
+          rev = "25f72e74ac7ba46b35dca4dd17f8d9196a5b7efd";
         };
       }
     ];
