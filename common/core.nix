@@ -1,7 +1,9 @@
 {pkgs}:
 with pkgs; [
   zsh
-  git
   starship
+  git
+  jujutsu
+  worktrunk
   gh
 ]

@@ -14,5 +14,4 @@ with pkgs; [
   tree
   yq
   zoxide
-  worktrunk
 ]
