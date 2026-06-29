@@ -33,7 +33,7 @@
       wtl = "wt list";
       wts = "wt switch";
       wtr = "wt remove";
-      c = "claude";
+      cc = "claude";
       oc = "opencode";
       oc-conf = "nvim ~/.config/opencode/opencode.json";
     };

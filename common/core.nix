@@ -6,4 +6,5 @@ with pkgs; [
   jujutsu
   worktrunk
   gh
+  tmux
 ]

@@ -1,6 +1,9 @@
 {pkgs}:
 with pkgs; [
-  opencode
-  ollama
   agent-browser
+  github-copilot-cli
+  ollama
+  opencode
+  pi-coding-agent
+  skills
 ]
