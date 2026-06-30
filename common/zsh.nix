@@ -37,13 +37,16 @@
       oc = "opencode";
       oc-conf = "nvim ~/.config/opencode/opencode.json";
     };
-    initContent = ''
-      export GPG_TTY=$(tty)
-
-      # Nix
+    # Sourced via .zshenv before .zshrc, so the Nix profile (e.g. `pass`) is on
+    # PATH before plugins are sourced. .zshrc's plugin block runs before
+    # initContent, so sourcing nix-daemon there would be too late.
+    envExtra = ''
       if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
           . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
       fi
+    '';
+    initContent = ''
+      export GPG_TTY=$(tty)
 
       eval "$(direnv hook zsh)"
       eval "$(zoxide init zsh)"
@@ -82,7 +85,7 @@
         name = "ic-work";
         src = builtins.fetchGit {
           url = "git@github.com:VinceDeslo/ic-work-zsh-plugin.git";
-          rev = "25f72e74ac7ba46b35dca4dd17f8d9196a5b7efd";
+          rev = "624482aa09c100717c9b635ee27edd86d075c8d1";
         };
       }
     ];

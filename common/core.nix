@@ -7,4 +7,6 @@ with pkgs; [
   worktrunk
   gh
   tmux
+  pass
+  gnupg
 ]
