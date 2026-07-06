@@ -10,4 +10,5 @@ with pkgs; [
   terraform
   terraform-docs
   tilt
+  gcx
 ]

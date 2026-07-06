@@ -59,6 +59,7 @@
       source <(just --completions zsh)
       source <(fnm completions --shell zsh)
       source <(wt config shell init zsh)
+      source <(gcx completion zsh)
 
       autoload -Uz compinit && compinit
       autoload bashcompinit && bashcompinit
