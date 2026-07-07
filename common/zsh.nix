@@ -36,6 +36,7 @@
       cc = "claude";
       oc = "opencode";
       oc-conf = "nvim ~/.config/opencode/opencode.json";
+      hrd = "herdr";
     };
     # Sourced via .zshenv before .zshrc, so the Nix profile (e.g. `pass`) is on
     # PATH before plugins are sourced. .zshrc's plugin block runs before

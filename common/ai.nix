@@ -6,4 +6,5 @@ with pkgs; [
   opencode
   pi-coding-agent
   skills
+  herdr
 ]
