@@ -1,6 +1,7 @@
 {pkgs}:
 with pkgs; [
   bat
+  btop
   direnv
   eza
   fzf
