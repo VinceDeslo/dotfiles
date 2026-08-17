@@ -8,8 +8,7 @@
 
 ## Directives
 
-- ONLY write comments if there is a legitimate architectural/performance tradeoff that other developers should be made aware of.
-- ALWAYS prefer self-explanatory variable/function/struct/file naming patterns vs addition of comments.
-- NEVER write comments, only author them when explicitly prompted to.
-- If you are updating a comment, ALWAYS aim to reduce the size of the comment to clearer more concise prose.
-- NEVER include any ticketing system ticket numbers in code or comments (eg. Linear, Jira, etc.)
+- NEVER write comments.
+- NEVER increase the prose length of comments.
+- NEVER include any ticketing system identifiers in code or docs (eg. Linear, Jira, etc.)
+- ALWAYS make variable/function/struct/file names self-explanatory.
