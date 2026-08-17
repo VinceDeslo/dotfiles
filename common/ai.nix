@@ -7,4 +7,5 @@ with pkgs; [
   pi-coding-agent
   skills
   herdr
+  llmfit
 ]

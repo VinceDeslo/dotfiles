@@ -19,4 +19,5 @@ in
     tmux
     pass
     gnupg
+    hunk
   ]

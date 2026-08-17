@@ -81,6 +81,8 @@
 
       export PATH="$HOME/.local/bin:$PATH"
       export GITHUB_TOKEN=$(gh auth token)
+
+      source ~/.venv-vllm-metal/bin/activate
     '';
     plugins = [
       {
