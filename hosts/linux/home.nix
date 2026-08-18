@@ -9,7 +9,7 @@ in {
   imports = [
     ../../common/zsh.nix
     ../../common/starship.nix
-    ../../common/claude.nix
+    ../../common/ai.nix
   ];
 
   home.username = "vince";

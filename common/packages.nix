@@ -1,5 +1,4 @@
 {pkgs}: let
-  ai = import ./ai.nix {inherit pkgs;};
   backend = import ./backend.nix {inherit pkgs;};
   cli = import ./cli.nix {inherit pkgs;};
   cloud = import ./cloud.nix {inherit pkgs;};
@@ -9,8 +8,7 @@
   obs = import ./observability.nix {inherit pkgs;};
   utils = import ./utils.nix {inherit pkgs;};
 in (
-  ai
-  ++ backend
+  backend
   ++ cli
   ++ cloud
   ++ core
