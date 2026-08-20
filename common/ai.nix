@@ -7,6 +7,7 @@
   # Shared context shipped to every agent.
   contextFiles = [
     ./context/worktrees.md
+    ./context/language.md
     ./context/locations.md
     ./context/style.md
   ];
@@ -44,6 +45,7 @@ in {
 
   home.file.".claude/CLAUDE.md".source = "${claudeContext}/CLAUDE.md";
   home.file.".claude/worktrees.md".source = "${claudeContext}/worktrees.md";
+  home.file.".claude/language.md".source = "${claudeContext}/language.md";
   home.file.".claude/locations.md".source = "${claudeContext}/locations.md";
   home.file.".claude/style.md".source = "${claudeContext}/style.md";
 
