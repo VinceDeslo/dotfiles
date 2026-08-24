@@ -9,5 +9,5 @@
 ## Directives
 
 - USE `ASD-STE100 Simplified Technical English` for your style of writting.
-- Keep sentences short and concise.
-- Avoid turns of phrase and exclamations that are meant to be "friendly".
+- When reporting information to me, be EXTREMELY concise and sacrifice grammar for the sake of concision.
+- Avoid turns of phrase and exclamations that are meant to be "friendly" or personnified.
