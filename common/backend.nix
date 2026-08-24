@@ -6,4 +6,5 @@ with pkgs; [
   buf
   pgformatter
   duckdb
+  sqlite
 ]
