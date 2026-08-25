@@ -6,10 +6,11 @@
 }: let
   # Shared context shipped to every agent.
   contextFiles = [
-    ./context/worktrees.md
+    ./context/commit.md
     ./context/language.md
     ./context/locations.md
     ./context/style.md
+    ./context/worktrees.md
   ];
 
   # Claude resolves `@file` imports in CLAUDE.md against the realpath of the
@@ -44,10 +45,11 @@ in {
   ];
 
   home.file.".claude/CLAUDE.md".source = "${claudeContext}/CLAUDE.md";
-  home.file.".claude/worktrees.md".source = "${claudeContext}/worktrees.md";
+  home.file.".claude/commit.md".source = "${claudeContext}/commit.md";
   home.file.".claude/language.md".source = "${claudeContext}/language.md";
   home.file.".claude/locations.md".source = "${claudeContext}/locations.md";
   home.file.".claude/style.md".source = "${claudeContext}/style.md";
+  home.file.".claude/worktrees.md".source = "${claudeContext}/worktrees.md";
 
   home.file.".config/opencode/AGENTS.md".source = "${opencodeContext}/AGENTS.md";
 }
