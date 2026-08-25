@@ -19,7 +19,7 @@
       print-path = "echo $PATH | tr : '\n'";
       get-uuid = "uuidgen | tr A-Z a-z | pbcopy";
       branch-cleanup = "git branch | grep -v 'main' | xargs git branch -D";
-      brainsync = ''cd ~/repos/brain && git add -A && git commit -m "notes $(date +%F)" && git push'';
+      brainsync = ''cd ~/repos/personal/brain && git add -A && git commit -m "notes $(date +%F)" && git push'';
       nixd = "nix develop -c $SHELL";
       gs = "git status";
       ga = "git add .";
