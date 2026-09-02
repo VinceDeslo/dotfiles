@@ -35,13 +35,14 @@
 in {
   home.packages = with pkgs; [
     agent-browser
+    codex
     github-copilot-cli
+    herdr
+    llmfit
     ollama
     opencode
     pi-coding-agent
     skills
-    herdr
-    llmfit
   ];
 
   home.file.".claude/CLAUDE.md".source = "${claudeContext}/CLAUDE.md";

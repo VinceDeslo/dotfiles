@@ -35,6 +35,7 @@
       wtr = "wt remove";
       cc = "claude";
       oc = "opencode";
+      cx = "codex";
       oc-conf = "nvim ~/.config/opencode/opencode.json";
       hrd = "herdr";
     };
