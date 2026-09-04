@@ -84,6 +84,8 @@
       export GITHUB_TOKEN=$(gh auth token)
 
       source ~/.venv-vllm-metal/bin/activate
+
+      kubectl config use-context docker-desktop >/dev/null 2>&1
     '';
     plugins = [
       {
