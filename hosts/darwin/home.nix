@@ -10,6 +10,7 @@ in {
     ../../common/zsh.nix
     ../../common/starship.nix
     ../../common/ai.nix
+    ../../common/nono.nix
   ];
 
   home.username = "vince";

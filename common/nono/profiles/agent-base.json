@@ -1,0 +1,202 @@
+{
+  "$schema": "https://nono.sh/schemas/nono-profile.schema.json",
+  "extends": "default",
+  "meta": {
+    "name": "agent-base",
+    "version": "0.1.0",
+    "description": "Shared sandbox baseline for coding agents launched from the shell"
+  },
+  "groups": {
+    "include": [
+      "nix_runtime",
+      "node_runtime",
+      "git_config",
+      "go_runtime",
+      "rust_runtime",
+      "python_runtime",
+      {
+        "name": "go_runtime_macos",
+        "when": "macos"
+      },
+      {
+        "name": "user_caches_macos",
+        "when": "macos"
+      }
+    ]
+  },
+  "workdir": {
+    "access": "readwrite"
+  },
+  "filesystem": {
+    "read": ["$HOME/.agents", "$HOME/.local/share/fnm", "$HOME/.config/worktrunk"],
+    "allow": ["$HOME/.cache", "$HOME/go/pkg/mod", "$HOME/.cargo/registry", "$HOME/.cargo/git"]
+  },
+  "environment": {
+    "deny_vars": ["AWS_ACCESS_KEY_ID", "AWS_SECRET_ACCESS_KEY", "AWS_SESSION_TOKEN", "OP_SERVICE_ACCOUNT_TOKEN"]
+  },
+  "rollback": {
+    "exclude_patterns": ["node_modules", "target", ".direnv", "result"]
+  },
+  "command_policies": {
+    "commands": {
+      "kubectl": {
+        "from": {
+          "session": {
+            "sandbox": {
+              "fs_read": ["$HOME/.kube"],
+              "fs_write": ["$HOME/.kube/cache"],
+              "network": {
+                "allow_all": true
+              },
+              "environment": {
+                "allow_vars": ["HOME", "PATH", "TERM", "KUBECONFIG"]
+              }
+            },
+            "invocation_policy": {
+              "default": "deny",
+              "deny": [
+                {"argv": {"contains": ["--kubeconfig"]}, "reason": "agents stay on the shell's current context with the shell's identity"},
+                {"argv": {"contains": ["--context"]}, "reason": "agents stay on the shell's current context with the shell's identity"},
+                {"argv": {"contains": ["--cluster"]}, "reason": "agents stay on the shell's current context with the shell's identity"},
+                {"argv": {"contains": ["--server"]}, "reason": "agents stay on the shell's current context with the shell's identity"},
+                {"argv": {"contains": ["--token"]}, "reason": "agents stay on the shell's current context with the shell's identity"},
+                {"argv": {"contains": ["--as"]}, "reason": "agents stay on the shell's current context with the shell's identity"},
+                {"argv": {"contains": ["--as-group"]}, "reason": "agents stay on the shell's current context with the shell's identity"},
+                {"argv": {"contains": ["--as-uid"]}, "reason": "agents stay on the shell's current context with the shell's identity"},
+                {"argv": {"contains": ["--raw"]}, "reason": "agents stay on the shell's current context with the shell's identity"}
+              ],
+              "allow": [
+                {"argv": {"prefix": ["get"]}},
+                {"argv": {"prefix": ["describe"]}},
+                {"argv": {"prefix": ["logs"]}},
+                {"argv": {"prefix": ["top"]}},
+                {"argv": {"prefix": ["explain"]}},
+                {"argv": {"prefix": ["events"]}},
+                {"argv": {"prefix": ["diff"]}},
+                {"argv": {"prefix": ["api-resources"]}},
+                {"argv": {"prefix": ["api-versions"]}},
+                {"argv": {"prefix": ["version"]}},
+                {"argv": {"prefix": ["cluster-info"]}},
+                {"argv": {"prefix": ["auth", "can-i"]}},
+                {"argv": {"prefix": ["auth", "whoami"]}},
+                {"argv": {"prefix": ["rollout", "status"]}},
+                {"argv": {"prefix": ["rollout", "history"]}},
+                {"argv": {"prefix": ["config", "view"]}},
+                {"argv": {"prefix": ["config", "get-contexts"]}},
+                {"argv": {"prefix": ["config", "current-context"]}},
+                {"argv": {"prefix": ["config", "get-clusters"]}},
+                {"argv": {"prefix": ["config", "get-users"]}}
+              ]
+            }
+          }
+        }
+      },
+      "aws": {
+        "from": {
+          "session": {
+            "sandbox": {
+              "fs_read": ["$HOME/.aws"],
+              "fs_write": ["$HOME/.aws/cli/cache", "$HOME/.aws/sso/cache"],
+              "network": {
+                "allow_all": true
+              },
+              "environment": {
+                "allow_vars": ["HOME", "PATH", "TERM", "AWS_PROFILE", "AWS_REGION", "AWS_DEFAULT_REGION", "AWS_PAGER"]
+              }
+            },
+            "invocation_policy": {
+              "default": "deny",
+              "deny": [
+                {"argv": {"contains": ["--profile"]}, "reason": "agents use the shell's AWS_PROFILE and the default endpoint"},
+                {"argv": {"contains": ["--endpoint-url"]}, "reason": "agents use the shell's AWS_PROFILE and the default endpoint"},
+                {"argv": {"contains": ["--ca-bundle"]}, "reason": "agents use the shell's AWS_PROFILE and the default endpoint"},
+                {"argv": {"contains": ["--no-verify-ssl"]}, "reason": "agents use the shell's AWS_PROFILE and the default endpoint"}
+              ],
+              "allow": [
+                {"argv": {"prefix": ["sts", "get-caller-identity"]}},
+                {"argv": {"prefix": ["configure", "list"]}},
+                {"argv": {"prefix": ["configure", "list-profiles"]}},
+                {"argv": {"prefix": ["configure", "get"]}},
+                {"argv": {"prefix": ["ec2", "describe-instances"]}},
+                {"argv": {"prefix": ["ec2", "describe-volumes"]}},
+                {"argv": {"prefix": ["ec2", "describe-snapshots"]}},
+                {"argv": {"prefix": ["ec2", "describe-images"]}},
+                {"argv": {"prefix": ["ec2", "describe-vpcs"]}},
+                {"argv": {"prefix": ["ec2", "describe-subnets"]}},
+                {"argv": {"prefix": ["ec2", "describe-security-groups"]}},
+                {"argv": {"prefix": ["ec2", "describe-regions"]}},
+                {"argv": {"prefix": ["ec2", "describe-availability-zones"]}},
+                {"argv": {"prefix": ["ec2", "describe-instance-types"]}},
+                {"argv": {"prefix": ["ec2", "describe-reserved-instances"]}},
+                {"argv": {"prefix": ["ec2", "describe-spot-price-history"]}},
+                {"argv": {"prefix": ["ec2", "describe-nat-gateways"]}},
+                {"argv": {"prefix": ["ec2", "describe-addresses"]}},
+                {"argv": {"prefix": ["s3", "ls"]}},
+                {"argv": {"prefix": ["s3api", "list-buckets"]}},
+                {"argv": {"prefix": ["s3api", "get-bucket-location"]}},
+                {"argv": {"prefix": ["s3api", "get-bucket-tagging"]}},
+                {"argv": {"prefix": ["s3api", "list-objects-v2"]}},
+                {"argv": {"prefix": ["rds", "describe-db-instances"]}},
+                {"argv": {"prefix": ["rds", "describe-db-clusters"]}},
+                {"argv": {"prefix": ["rds", "describe-reserved-db-instances"]}},
+                {"argv": {"prefix": ["eks", "list-clusters"]}},
+                {"argv": {"prefix": ["eks", "describe-cluster"]}},
+                {"argv": {"prefix": ["eks", "list-nodegroups"]}},
+                {"argv": {"prefix": ["eks", "describe-nodegroup"]}},
+                {"argv": {"prefix": ["ecs", "list-clusters"]}},
+                {"argv": {"prefix": ["ecs", "describe-clusters"]}},
+                {"argv": {"prefix": ["ecs", "list-services"]}},
+                {"argv": {"prefix": ["ecs", "describe-services"]}},
+                {"argv": {"prefix": ["ecs", "list-tasks"]}},
+                {"argv": {"prefix": ["ecs", "describe-tasks"]}},
+                {"argv": {"prefix": ["ecs", "describe-task-definition"]}},
+                {"argv": {"prefix": ["lambda", "list-functions"]}},
+                {"argv": {"prefix": ["lambda", "get-function-configuration"]}},
+                {"argv": {"prefix": ["dynamodb", "list-tables"]}},
+                {"argv": {"prefix": ["dynamodb", "describe-table"]}},
+                {"argv": {"prefix": ["elbv2", "describe-load-balancers"]}},
+                {"argv": {"prefix": ["elbv2", "describe-target-groups"]}},
+                {"argv": {"prefix": ["autoscaling", "describe-auto-scaling-groups"]}},
+                {"argv": {"prefix": ["ecr", "describe-repositories"]}},
+                {"argv": {"prefix": ["ecr", "describe-images"]}},
+                {"argv": {"prefix": ["iam", "get-user"]}},
+                {"argv": {"prefix": ["iam", "list-roles"]}},
+                {"argv": {"prefix": ["iam", "get-role"]}},
+                {"argv": {"prefix": ["iam", "list-policies"]}},
+                {"argv": {"prefix": ["iam", "get-policy"]}},
+                {"argv": {"prefix": ["iam", "list-attached-role-policies"]}},
+                {"argv": {"prefix": ["cloudformation", "list-stacks"]}},
+                {"argv": {"prefix": ["cloudformation", "describe-stacks"]}},
+                {"argv": {"prefix": ["cloudformation", "describe-stack-resources"]}},
+                {"argv": {"prefix": ["cloudwatch", "list-metrics"]}},
+                {"argv": {"prefix": ["cloudwatch", "get-metric-statistics"]}},
+                {"argv": {"prefix": ["cloudwatch", "get-metric-data"]}},
+                {"argv": {"prefix": ["logs", "describe-log-groups"]}},
+                {"argv": {"prefix": ["logs", "filter-log-events"]}},
+                {"argv": {"prefix": ["logs", "tail"]}},
+                {"argv": {"prefix": ["ce", "get-cost-and-usage"]}},
+                {"argv": {"prefix": ["ce", "get-cost-forecast"]}},
+                {"argv": {"prefix": ["ce", "get-dimension-values"]}},
+                {"argv": {"prefix": ["ce", "get-tags"]}},
+                {"argv": {"prefix": ["pricing", "get-products"]}},
+                {"argv": {"prefix": ["pricing", "describe-services"]}},
+                {"argv": {"prefix": ["pricing", "get-attribute-values"]}},
+                {"argv": {"prefix": ["organizations", "list-accounts"]}},
+                {"argv": {"prefix": ["organizations", "describe-organization"]}},
+                {"argv": {"prefix": ["resourcegroupstaggingapi", "get-resources"]}},
+                {"argv": {"prefix": ["route53", "list-hosted-zones"]}},
+                {"argv": {"prefix": ["route53", "list-resource-record-sets"]}},
+                {"argv": {"prefix": ["sqs", "list-queues"]}},
+                {"argv": {"prefix": ["sqs", "get-queue-attributes"]}},
+                {"argv": {"prefix": ["sns", "list-topics"]}},
+                {"argv": {"prefix": ["ssm", "describe-parameters"]}},
+                {"argv": {"prefix": ["kms", "list-keys"]}},
+                {"argv": {"prefix": ["kms", "describe-key"]}}
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}

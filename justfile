@@ -16,3 +16,7 @@ linux:
 # Recursively format
 fmt:
     alejandra .
+
+# Validate the nono sandbox profiles shipped by this repo
+nono-validate:
+    for profile in common/nono/profiles/*.json; do nono profile validate "$profile"; done

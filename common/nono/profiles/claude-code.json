@@ -1,0 +1,9 @@
+{
+  "$schema": "https://nono.sh/schemas/nono-profile.schema.json",
+  "extends": ["agent-base", "claude"],
+  "meta": {
+    "name": "claude-code",
+    "version": "0.2.0",
+    "description": "Claude Code CLI: nolabs-ai/claude pack profile merged with the shared agent baseline"
+  }
+}

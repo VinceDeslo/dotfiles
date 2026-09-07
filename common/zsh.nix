@@ -33,7 +33,8 @@
       wtl = "wt list";
       wts = "wt switch";
       wtr = "wt remove";
-      cc = "claude";
+      cc = "nono run --profile claude-code --allow-cwd -- claude";
+      cc-unsandboxed = "claude";
       oc = "opencode";
       cx = "codex";
       oc-conf = "nvim ~/.config/opencode/opencode.json";
@@ -81,6 +82,7 @@
       bindkey '^Xa' select-alias # Ctrl-X then a
 
       export PATH="$HOME/.local/bin:$PATH"
+      export CLAUDE_CONFIG_DIR="$HOME/.claude"
       export GITHUB_TOKEN=$(gh auth token)
 
       source ~/.venv-vllm-metal/bin/activate
