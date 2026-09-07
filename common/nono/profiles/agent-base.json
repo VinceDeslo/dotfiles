@@ -29,6 +29,7 @@
   },
   "filesystem": {
     "read": ["$HOME/.agents", "$HOME/.local/share/fnm", "$HOME/.config/worktrunk"],
+    "read_file": ["$HOME/.ssh/known_hosts"],
     "allow": ["$HOME/repos", "$HOME/.cache", "$HOME/go/pkg/mod", "$HOME/.cargo/registry", "$HOME/.cargo/git"]
   },
   "environment": {
