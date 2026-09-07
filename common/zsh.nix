@@ -33,6 +33,8 @@
       wtl = "wt list";
       wts = "wt switch";
       wtr = "wt remove";
+      hd = "hunk diff";
+      hds = "hunk diff --staged";
       cc = "nono run --profile claude-code --allow-cwd -- claude";
       cc-unsandboxed = "claude";
       oc = "nono run --profile opencode-cli --allow-cwd -- opencode";
