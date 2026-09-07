@@ -47,8 +47,16 @@
         format = "[$symbol$context]($style)";
         style = "bright-blue";
         contexts = [
-          { context_pattern = "(?:.*:cluster/)?(?P<c>.*prod.*)"; context_alias = "$c"; style = "red bold"; }
-          { context_pattern = "(?:.*:cluster/)?(?P<c>.*dev.*)"; context_alias = "$c"; style = "bright-green"; }
+          {
+            context_pattern = "(?:.*:cluster/)?(?P<c>.*prod.*)";
+            context_alias = "$c";
+            style = "red bold";
+          }
+          {
+            context_pattern = "(?:.*:cluster/)?(?P<c>.*dev.*)";
+            context_alias = "$c";
+            style = "bright-green";
+          }
         ];
       };
     };

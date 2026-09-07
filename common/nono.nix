@@ -8,6 +8,17 @@
       value.source = "${profilesDir}/${fileName}";
     })
     profileFileNames);
+  opencodeStateDirs = [
+    "$HOME/.opencode"
+    "$HOME/.config/opencode"
+    "$HOME/.cache/opencode"
+    "$HOME/.local/share/opencode"
+    "$HOME/.local/share/opentui"
+    "$HOME/.local/state/opencode"
+  ];
 in {
   home.file = profileLinks;
+  home.activation.ensureOpencodeStateDirs = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    run mkdir -p ${lib.concatStringsSep " " opencodeStateDirs}
+  '';
 }
