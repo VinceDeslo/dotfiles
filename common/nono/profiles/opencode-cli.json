@@ -1,0 +1,9 @@
+{
+  "$schema": "https://nono.sh/schemas/nono-profile.schema.json",
+  "extends": ["agent-base", "opencode"],
+  "meta": {
+    "name": "opencode-cli",
+    "version": "0.1.0",
+    "description": "opencode CLI: nolabs-ai/opencode pack profile merged with the shared agent baseline"
+  }
+}

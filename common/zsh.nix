@@ -35,7 +35,8 @@
       wtr = "wt remove";
       cc = "nono run --profile claude-code --allow-cwd -- claude";
       cc-unsandboxed = "claude";
-      oc = "opencode";
+      oc = "nono run --profile opencode-cli --allow-cwd -- opencode";
+      oc-unsandboxed = "opencode";
       cx = "codex";
       oc-conf = "nvim ~/.config/opencode/opencode.json";
       hrd = "herdr";
