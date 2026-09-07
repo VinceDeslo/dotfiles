@@ -29,7 +29,7 @@
   },
   "filesystem": {
     "read": ["$HOME/.agents", "$HOME/.local/share/fnm", "$HOME/.config/worktrunk"],
-    "allow": ["$HOME/.cache", "$HOME/go/pkg/mod", "$HOME/.cargo/registry", "$HOME/.cargo/git"]
+    "allow": ["$HOME/repos", "$HOME/.cache", "$HOME/go/pkg/mod", "$HOME/.cargo/registry", "$HOME/.cargo/git"]
   },
   "environment": {
     "deny_vars": ["AWS_ACCESS_KEY_ID", "AWS_SECRET_ACCESS_KEY", "AWS_SESSION_TOKEN", "OP_SERVICE_ACCOUNT_TOKEN"]
