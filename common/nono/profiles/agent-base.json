@@ -97,8 +97,9 @@
         "from": {
           "session": {
             "sandbox": {
-              "fs_read": ["$HOME/.aws"],
+              "fs_read": ["$HOME/.aws", "/nix/store"],
               "fs_write": ["$HOME/.aws/cli/cache", "$HOME/.aws/sso/cache"],
+              "unsafe_macos_seatbelt_rules": ["(allow process-exec* (subpath \"/nix/store\"))"],
               "network": {
                 "allow_all": true
               },
