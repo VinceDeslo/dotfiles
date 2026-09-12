@@ -35,6 +35,7 @@
 in {
   home.packages = with pkgs; [
     agent-browser
+    claude-code
     codex
     github-copilot-cli
     herdr
