@@ -8,7 +8,8 @@
       value.source = "${profilesDir}/${fileName}";
     })
     profileFileNames);
-  opencodeStateDirs = [
+  agentStateDirs = [
+    "$HOME/.artifacts"
     "$HOME/.opencode"
     "$HOME/.config/opencode"
     "$HOME/.cache/opencode"
@@ -18,7 +19,7 @@
   ];
 in {
   home.file = profileLinks;
-  home.activation.ensureOpencodeStateDirs = lib.hm.dag.entryAfter ["writeBoundary"] ''
-    run mkdir -p ${lib.concatStringsSep " " opencodeStateDirs}
+  home.activation.ensureAgentStateDirs = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    run mkdir -p ${lib.concatStringsSep " " agentStateDirs}
   '';
 }
