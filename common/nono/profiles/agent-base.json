@@ -37,7 +37,7 @@
     "open_port": [8642]
   },
   "environment": {
-    "deny_vars": ["AWS_ACCESS_KEY_ID", "AWS_SECRET_ACCESS_KEY", "AWS_SESSION_TOKEN", "OP_SERVICE_ACCOUNT_TOKEN"]
+    "deny_vars": ["AWS_ACCESS_KEY_ID", "AWS_SECRET_ACCESS_KEY", "AWS_SESSION_TOKEN", "AZURE_CLIENT_SECRET", "AZURE_CLIENT_CERTIFICATE_PASSWORD", "ARM_CLIENT_SECRET", "OP_SERVICE_ACCOUNT_TOKEN"]
   },
   "rollback": {
     "exclude_patterns": ["node_modules", "target", ".direnv", "result"]
@@ -222,6 +222,139 @@
                 {"argv": {"prefix": ["ssm", "describe-parameters"]}},
                 {"argv": {"prefix": ["kms", "list-keys"]}},
                 {"argv": {"prefix": ["kms", "describe-key"]}}
+              ]
+            }
+          }
+        }
+      },
+      "az": {
+        "from": {
+          "session": {
+            "sandbox": {
+              "fs_read": ["$HOME/.azure", "/nix/store"],
+              "fs_write": ["$HOME/.azure/logs", "$HOME/.azure/telemetry", "$HOME/.azure/commandIndex.json", "$HOME/.azure/msal_token_cache.json", "$HOME/.azure/msal_http_cache.bin", "$HOME/.azure/versionCheck.json"],
+              "unsafe_macos_seatbelt_rules": ["(allow process-exec* (subpath \"/nix/store\"))"],
+              "network": {
+                "allow_all": true
+              },
+              "environment": {
+                "allow_vars": ["HOME", "PATH", "TERM", "AZURE_CONFIG_DIR", "AZURE_EXTENSION_DIR", "AZURE_CORE_OUTPUT", "AZURE_CORE_NO_COLOR", "AZURE_CORE_ONLY_SHOW_ERRORS"]
+              }
+            },
+            "invocation_policy": {
+              "default": "deny",
+              "deny": [
+                {"argv": {"contains": ["--subscription"]}, "reason": "agents use the shell's logged-in Azure subscription and tenant"},
+                {"argv": {"contains": ["--tenant"]}, "reason": "agents use the shell's logged-in Azure subscription and tenant"},
+                {"argv": {"contains": ["--password"]}, "reason": "agents use the shell's logged-in Azure subscription and tenant"},
+                {"argv": {"contains": ["--service-principal"]}, "reason": "agents use the shell's logged-in Azure subscription and tenant"},
+                {"argv": {"contains": ["--federated-token"]}, "reason": "agents use the shell's logged-in Azure subscription and tenant"}
+              ],
+              "allow": [
+                {"argv": {"prefix": ["version"]}},
+                {"argv": {"prefix": ["account", "show"]}},
+                {"argv": {"prefix": ["account", "list"]}},
+                {"argv": {"prefix": ["account", "list-locations"]}},
+                {"argv": {"prefix": ["account", "tenant", "list"]}},
+                {"argv": {"prefix": ["account", "management-group", "list"]}},
+                {"argv": {"prefix": ["cloud", "list"]}},
+                {"argv": {"prefix": ["cloud", "show"]}},
+                {"argv": {"prefix": ["configure", "--list-defaults"]}},
+                {"argv": {"prefix": ["extension", "list"]}},
+                {"argv": {"prefix": ["ad", "signed-in-user", "show"]}},
+                {"argv": {"prefix": ["group", "list"]}},
+                {"argv": {"prefix": ["group", "show"]}},
+                {"argv": {"prefix": ["resource", "list"]}},
+                {"argv": {"prefix": ["resource", "show"]}},
+                {"argv": {"prefix": ["provider", "list"]}},
+                {"argv": {"prefix": ["provider", "show"]}},
+                {"argv": {"prefix": ["tag", "list"]}},
+                {"argv": {"prefix": ["lock", "list"]}},
+                {"argv": {"prefix": ["deployment", "group", "list"]}},
+                {"argv": {"prefix": ["deployment", "group", "show"]}},
+                {"argv": {"prefix": ["deployment", "sub", "list"]}},
+                {"argv": {"prefix": ["deployment", "sub", "show"]}},
+                {"argv": {"prefix": ["vm", "list"]}},
+                {"argv": {"prefix": ["vm", "show"]}},
+                {"argv": {"prefix": ["vm", "list-sizes"]}},
+                {"argv": {"prefix": ["vm", "list-skus"]}},
+                {"argv": {"prefix": ["vm", "list-vm-resize-options"]}},
+                {"argv": {"prefix": ["vmss", "list"]}},
+                {"argv": {"prefix": ["vmss", "show"]}},
+                {"argv": {"prefix": ["disk", "list"]}},
+                {"argv": {"prefix": ["disk", "show"]}},
+                {"argv": {"prefix": ["snapshot", "list"]}},
+                {"argv": {"prefix": ["image", "list"]}},
+                {"argv": {"prefix": ["identity", "list"]}},
+                {"argv": {"prefix": ["identity", "show"]}},
+                {"argv": {"prefix": ["network", "vnet", "list"]}},
+                {"argv": {"prefix": ["network", "vnet", "show"]}},
+                {"argv": {"prefix": ["network", "vnet", "subnet", "list"]}},
+                {"argv": {"prefix": ["network", "vnet", "subnet", "show"]}},
+                {"argv": {"prefix": ["network", "nsg", "list"]}},
+                {"argv": {"prefix": ["network", "nsg", "show"]}},
+                {"argv": {"prefix": ["network", "nic", "list"]}},
+                {"argv": {"prefix": ["network", "nic", "show"]}},
+                {"argv": {"prefix": ["network", "public-ip", "list"]}},
+                {"argv": {"prefix": ["network", "public-ip", "show"]}},
+                {"argv": {"prefix": ["network", "lb", "list"]}},
+                {"argv": {"prefix": ["network", "lb", "show"]}},
+                {"argv": {"prefix": ["network", "nat", "gateway", "list"]}},
+                {"argv": {"prefix": ["network", "private-endpoint", "list"]}},
+                {"argv": {"prefix": ["network", "dns", "zone", "list"]}},
+                {"argv": {"prefix": ["network", "dns", "record-set", "list"]}},
+                {"argv": {"prefix": ["storage", "account", "list"]}},
+                {"argv": {"prefix": ["storage", "account", "show"]}},
+                {"argv": {"prefix": ["storage", "account", "show-usage"]}},
+                {"argv": {"prefix": ["storage", "container", "list"]}},
+                {"argv": {"prefix": ["storage", "blob", "list"]}},
+                {"argv": {"prefix": ["aks", "list"]}},
+                {"argv": {"prefix": ["aks", "show"]}},
+                {"argv": {"prefix": ["aks", "nodepool", "list"]}},
+                {"argv": {"prefix": ["aks", "nodepool", "show"]}},
+                {"argv": {"prefix": ["acr", "list"]}},
+                {"argv": {"prefix": ["acr", "show"]}},
+                {"argv": {"prefix": ["acr", "repository", "list"]}},
+                {"argv": {"prefix": ["acr", "repository", "show-tags"]}},
+                {"argv": {"prefix": ["containerapp", "list"]}},
+                {"argv": {"prefix": ["containerapp", "show"]}},
+                {"argv": {"prefix": ["containerapp", "env", "list"]}},
+                {"argv": {"prefix": ["webapp", "list"]}},
+                {"argv": {"prefix": ["webapp", "show"]}},
+                {"argv": {"prefix": ["functionapp", "list"]}},
+                {"argv": {"prefix": ["functionapp", "show"]}},
+                {"argv": {"prefix": ["appservice", "plan", "list"]}},
+                {"argv": {"prefix": ["appservice", "plan", "show"]}},
+                {"argv": {"prefix": ["sql", "server", "list"]}},
+                {"argv": {"prefix": ["sql", "server", "show"]}},
+                {"argv": {"prefix": ["sql", "db", "list"]}},
+                {"argv": {"prefix": ["sql", "db", "show"]}},
+                {"argv": {"prefix": ["postgres", "flexible-server", "list"]}},
+                {"argv": {"prefix": ["postgres", "flexible-server", "show"]}},
+                {"argv": {"prefix": ["mysql", "flexible-server", "list"]}},
+                {"argv": {"prefix": ["mysql", "flexible-server", "show"]}},
+                {"argv": {"prefix": ["cosmosdb", "list"]}},
+                {"argv": {"prefix": ["cosmosdb", "show"]}},
+                {"argv": {"prefix": ["redis", "list"]}},
+                {"argv": {"prefix": ["redis", "show"]}},
+                {"argv": {"prefix": ["servicebus", "namespace", "list"]}},
+                {"argv": {"prefix": ["eventhubs", "namespace", "list"]}},
+                {"argv": {"prefix": ["keyvault", "list"]}},
+                {"argv": {"prefix": ["keyvault", "show"]}},
+                {"argv": {"prefix": ["monitor", "metrics", "list"]}},
+                {"argv": {"prefix": ["monitor", "metrics", "list-definitions"]}},
+                {"argv": {"prefix": ["monitor", "activity-log", "list"]}},
+                {"argv": {"prefix": ["monitor", "log-analytics", "workspace", "list"]}},
+                {"argv": {"prefix": ["monitor", "log-analytics", "workspace", "show"]}},
+                {"argv": {"prefix": ["monitor", "diagnostic-settings", "list"]}},
+                {"argv": {"prefix": ["role", "assignment", "list"]}},
+                {"argv": {"prefix": ["role", "definition", "list"]}},
+                {"argv": {"prefix": ["policy", "assignment", "list"]}},
+                {"argv": {"prefix": ["policy", "definition", "list"]}},
+                {"argv": {"prefix": ["advisor", "recommendation", "list"]}},
+                {"argv": {"prefix": ["consumption", "usage", "list"]}},
+                {"argv": {"prefix": ["consumption", "budget", "list"]}},
+                {"argv": {"prefix": ["billing", "account", "list"]}}
               ]
             }
           }
