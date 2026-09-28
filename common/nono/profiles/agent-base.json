@@ -270,8 +270,8 @@
         "from": {
           "session": {
             "sandbox": {
-              "fs_read": ["$HOME/.azure", "/nix/store"],
-              "fs_write": ["$HOME/.azure/logs", "$HOME/.azure/telemetry", "$HOME/.azure/commandIndex.json", "$HOME/.azure/msal_token_cache.json", "$HOME/.azure/msal_http_cache.bin", "$HOME/.azure/versionCheck.json"],
+              "fs_read": ["/nix/store", "$WORKDIR"],
+              "fs_write": ["$HOME/.azure"],
               "unsafe_macos_seatbelt_rules": ["(allow process-exec* (subpath \"/nix/store\"))"],
               "network": {
                 "allow_all": true
