@@ -10,5 +10,6 @@ with pkgs; [
   kubectx
   terraform
   terraform-docs
+  tflint
   tilt
 ]
