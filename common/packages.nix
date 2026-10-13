@@ -4,6 +4,7 @@
   cloud = import ./cloud.nix {inherit pkgs;};
   core = import ./core.nix {inherit pkgs;};
   docs = import ./docs.nix {inherit pkgs;};
+  kvm = import ./kvm.nix {inherit pkgs;};
   langs = import ./langs.nix {inherit pkgs;};
   obs = import ./observability.nix {inherit pkgs;};
   sandbox = import ./sandbox.nix {inherit pkgs;};
@@ -14,6 +15,7 @@ in (
   ++ cloud
   ++ core
   ++ docs
+  ++ kvm
   ++ langs
   ++ obs
   ++ sandbox
