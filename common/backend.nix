@@ -7,4 +7,6 @@ with pkgs; [
   pgformatter
   duckdb
   sqlite
+  nats-server
+  natscli
 ]
