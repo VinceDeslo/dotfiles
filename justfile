@@ -25,3 +25,5 @@ nono-validate:
 nono-pull:
     nono pull nolabs-ai/claude
     nono pull nolabs-ai/opencode
+    nono pull nolabs-ai/codex
+    nono pull nolabs-ai/pi

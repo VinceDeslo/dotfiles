@@ -16,6 +16,8 @@
     "$HOME/.local/share/opencode"
     "$HOME/.local/share/opentui"
     "$HOME/.local/state/opencode"
+    "$HOME/.codex"
+    "$HOME/.pi"
   ];
 in {
   home.file = profileLinks;

@@ -1,0 +1,9 @@
+{
+  "$schema": "https://nono.sh/schemas/nono-profile.schema.json",
+  "extends": ["agent-base", "pi"],
+  "meta": {
+    "name": "pi-cli",
+    "version": "0.1.0",
+    "description": "pi CLI: nolabs-ai/pi pack profile merged with the shared agent baseline"
+  }
+}

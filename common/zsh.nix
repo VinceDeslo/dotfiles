@@ -39,7 +39,10 @@
       cc-unsandboxed = "claude";
       oc = "nono run --profile opencode-cli --allow-cwd -- opencode";
       oc-unsandboxed = "opencode";
-      cx = "codex";
+      cx = "nono run --profile codex-cli --allow-cwd -- codex";
+      cx-unsandboxed = "codex";
+      pi = "nono run --profile pi-cli --allow-cwd -- pi";
+      pi-unsandboxed = "command pi";
       oc-conf = "nvim ~/.config/opencode/opencode.json";
       hrd = "herdr";
     };

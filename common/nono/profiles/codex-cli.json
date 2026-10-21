@@ -1,0 +1,9 @@
+{
+  "$schema": "https://nono.sh/schemas/nono-profile.schema.json",
+  "extends": ["agent-base", "codex"],
+  "meta": {
+    "name": "codex-cli",
+    "version": "0.1.0",
+    "description": "codex CLI: nolabs-ai/codex pack profile merged with the shared agent baseline"
+  }
+}
