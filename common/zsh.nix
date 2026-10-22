@@ -50,6 +50,8 @@
       pi-unsandboxed = "command pi";
       oc-conf = "nvim ~/.config/opencode/opencode.json";
       hrd = "herdr";
+      azw = "AZURE_CONFIG_DIR=~/.azure-work az";
+      azp = "AZURE_CONFIG_DIR=~/.azure-personal az";
     };
     # Sourced via .zshenv before .zshrc, so the Nix profile (e.g. `pass`) is on
     # PATH before plugins are sourced. .zshrc's plugin block runs before

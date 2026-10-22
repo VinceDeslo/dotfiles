@@ -272,7 +272,7 @@
           "session": {
             "sandbox": {
               "fs_read": ["/nix/store", "$WORKDIR"],
-              "fs_write": ["$HOME/.azure", "$TMPDIR"],
+              "fs_write": ["$HOME/.azure", "$HOME/.azure-work", "$HOME/.azure-personal", "$TMPDIR"],
               "unsafe_macos_seatbelt_rules": ["(allow process-exec* (subpath \"/nix/store\"))"],
               "network": {
                 "allow_all": true
