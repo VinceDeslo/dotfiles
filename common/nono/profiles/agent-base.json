@@ -434,6 +434,7 @@
                 {"argv": {"contains": ["--insecure-log-http-payload"]}, "reason": "agents never log raw credentials"}
               ],
               "allow": [
+                {"argv": {"contains": ["--help"]}},
                 {"argv": {"prefix": ["agento11y", "agents", "get"]}},
                 {"argv": {"prefix": ["agento11y", "agents", "list"]}},
                 {"argv": {"prefix": ["agento11y", "agents", "list-versions"]}},
