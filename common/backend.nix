@@ -1,12 +1,15 @@
 {pkgs}:
 with pkgs; [
-  protobuf
-  protoc-gen-go
-  protoc-gen-es
+  auth0-cli
   buf
-  pgformatter
   duckdb
-  sqlite
+  grpcurl
   nats-server
   natscli
+  pgformatter
+  postgresql
+  protobuf
+  protoc-gen-es
+  protoc-gen-go
+  sqlite
 ]

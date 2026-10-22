@@ -21,4 +21,9 @@ with pkgs; [
 
   # Python
   uv
+  (python3.withPackages (pythonPackages:
+    with pythonPackages; [
+      pip
+      mlx
+    ]))
 ]

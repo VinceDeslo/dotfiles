@@ -40,7 +40,6 @@ in {
     github-copilot-cli
     herdr
     llmfit
-    ollama
     opencode
     pi-coding-agent
     skills

@@ -4,6 +4,9 @@
     autosuggestion.enable = true;
     enableCompletion = true;
     syntaxHighlighting.enable = true;
+    sessionVariables = {
+      NONO_NO_SAVE_PROMPT = "1";
+    };
     shellAliases = {
       v = "nvim";
       ls = "eza -la";
@@ -21,6 +24,8 @@
       branch-cleanup = "git branch | grep -v 'main' | xargs git branch -D";
       brainsync = ''cd ~/repos/personal/brain && git add -A && git commit -m "notes $(date +%F)" && git push'';
       nixd = "nix develop -c $SHELL";
+      vllm-on = "source ~/.venv-vllm-metal/bin/activate";
+      vllm-off = "deactivate";
       gs = "git status";
       ga = "git add .";
       gcb = "git checkout -b";
@@ -90,8 +95,6 @@
       export PATH="$HOME/.local/bin:$PATH"
       export CLAUDE_CONFIG_DIR="$HOME/.claude"
       export GITHUB_TOKEN=$(gh auth token)
-
-      source ~/.venv-vllm-metal/bin/activate
 
       kubectl config use-context docker-desktop >/dev/null 2>&1
     '';
