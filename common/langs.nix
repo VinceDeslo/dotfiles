@@ -26,4 +26,7 @@ with pkgs; [
       pip
       mlx
     ]))
+
+  # Please end my suffering
+  powershell
 ]
