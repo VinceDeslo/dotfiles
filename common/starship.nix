@@ -8,8 +8,8 @@
       right_format = "$aws$kubernetes";
 
       nix_shell = {
-        symbol = " ";
-        format = "[$symbol$name]($style) ";
+        symbol = "";
+        format = "[$symbol nix]($style) ";
         style = "bright-blue bold";
       };
       directory = {
