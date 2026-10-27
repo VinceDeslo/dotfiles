@@ -98,7 +98,7 @@
       export CLAUDE_CONFIG_DIR="$HOME/.claude"
       export GITHUB_TOKEN=$(gh auth token)
 
-      kubectl config use-context docker-desktop >/dev/null 2>&1
+      kubectl config use-context orbstack >/dev/null 2>&1
     '';
     plugins = [
       {
