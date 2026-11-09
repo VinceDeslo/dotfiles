@@ -29,9 +29,9 @@
   },
   "filesystem": {
     "read": ["$HOME/.agents", "$HOME/.local/share/fnm", "$HOME/.config/worktrunk", "$HOME/.config/gh"],
-    "read_file": ["$HOME/.ssh/known_hosts"],
+    "read_file": ["$HOME/.ssh/known_hosts", "$HOME/.ssh/id_ed25519.pub"],
     "unix_socket": ["$HOME/.config/herdr/herdr.sock.agent"],
-    "bypass_protection": ["$HOME/.ssh/known_hosts"],
+    "bypass_protection": ["$HOME/.ssh/known_hosts", "$HOME/.ssh/id_ed25519.pub"],
     "allow": ["$HOME/repos", "$HOME/.artifacts", "$HOME/.cache", "$HOME/go/pkg/mod", "$HOME/go/pkg/sumdb","$HOME/.cargo/registry", "$HOME/.cargo/git"]
   },
   "network": {
