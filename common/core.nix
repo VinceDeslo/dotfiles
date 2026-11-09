@@ -19,6 +19,7 @@ in
     gh
     tmux
     pass
+    openssh
     gnupg
     hunk
   ]

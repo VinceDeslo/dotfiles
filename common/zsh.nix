@@ -94,7 +94,8 @@
       zle -N fzf-alias-insert
       bindkey '^Xa' select-alias # Ctrl-X then a
 
-      export PATH="$HOME/.local/bin:$PATH"
+      typeset -U path
+      export PATH="$HOME/.local/bin:$HOME/.nix-profile/bin:/nix/var/nix/profiles/default/bin:$PATH"
       export CLAUDE_CONFIG_DIR="$HOME/.claude"
       export GITHUB_TOKEN=$(gh auth token)
 
