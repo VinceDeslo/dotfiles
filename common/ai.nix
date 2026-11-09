@@ -40,7 +40,11 @@ in {
     github-copilot-cli
     herdr
     llmfit
-    opencode
+    (opencode.overrideAttrs (old: {
+      node_modules = old.node_modules.overrideAttrs {
+        outputHash = "sha256-dIveiaiPFGSItwLyeMuPDxTE9gpvvnlTCB/+nG24qCc=";
+      };
+    }))
     pi-coding-agent
     skills
   ];
