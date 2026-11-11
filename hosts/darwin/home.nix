@@ -13,6 +13,7 @@ in {
     ../../common/nono.nix
     ../../common/ssh.nix
     ../../common/gpg.nix
+    ../../common/git.nix
   ];
 
   home.username = "vince";
