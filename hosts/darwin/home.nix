@@ -11,6 +11,7 @@ in {
     ../../common/starship.nix
     ../../common/ai.nix
     ../../common/nono.nix
+    ../../common/ssh.nix
   ];
 
   home.username = "vince";
