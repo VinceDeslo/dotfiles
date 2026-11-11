@@ -13,6 +13,12 @@ darwin:
 linux:
     home-manager switch --flake .#linux
 
+# Expire home-manager/nix generations, GC, optionally dedupe store
+gc days="7" optimise="false":
+    home-manager expire-generations "-{{days}} days"
+    nix-collect-garbage --delete-older-than {{days}}d
+    if [ "{{optimise}}" = "true" ]; then nix store optimise; fi
+
 # Recursively format
 fmt:
     alejandra .
