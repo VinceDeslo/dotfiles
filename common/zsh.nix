@@ -13,6 +13,7 @@
       cat = "bat";
       dots = "nvim ~/dotfiles";
       gconf = "v ~/.config/ghostty/config";
+      rc = "v ~/.config/rex/";
       hms = "home-manager switch --flake .";
       k = "kubectl";
       kctx = "kubectx";
