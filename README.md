@@ -62,7 +62,7 @@ Flake inputs:
 | `zsh.nix`      | Zsh with autosuggestions, highlighting, completions, aliases, and helpers        |
 | `starship.nix` | Prompt with git status on the left and AWS profile and kube context on the right |
 | `ai.nix`       | Coding agents and their shared instructions                                      |
-| `nono.nix`     | Links the nono profiles and makes the agent state directories                    |
+| `nono.nix`     | Renders the nono profiles with local gcx contexts, makes the agent state dirs    |
 | `ssh.nix`      | launchd `ssh-agent` with key loading at shell start, SSH host configuration      |
 | `gpg.nix`      | `pinentry-mac` for `gpg-agent`                                                   |
 | `git.nix`      | SSH commit signing and an allowed signers file for local verification            |
