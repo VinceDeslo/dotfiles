@@ -6,12 +6,16 @@ update:
     nix flake update
 
 # Run home-manager for Darwin system
-darwin: 
+darwin:
     home-manager switch --flake .#darwin
 
 # Run home-manager for Linux system
 linux:
     home-manager switch --flake .#linux
+
+# Rebuild NixOS system + home
+nixos:
+    sudo nixos-rebuild switch --flake .#nixos
 
 # Expire home-manager/nix generations, GC, optionally dedupe store
 gc days="7" optimise="false":

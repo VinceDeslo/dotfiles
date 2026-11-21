@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs-nixos.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -12,33 +13,47 @@
 
   outputs = {
     nixpkgs,
+    nixpkgs-nixos,
     home-manager,
     pdeconfig,
     ...
-  }: {
-    defaultPackage.aarch64-darwin = home-manager.defaultPackage.aarch64-darwin;
-    defaultPackage.x86_64-linux = home-manager.defaultPackage.x86_64-linux;
+  }: let
+    mkPkgs = system:
+      import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+      };
+    hmArgs = {inherit pdeconfig;};
+  in {
+    packages.aarch64-darwin.default = home-manager.packages.aarch64-darwin.default;
+    packages.x86_64-linux.default = home-manager.packages.x86_64-linux.default;
 
     homeConfigurations = {
       darwin = home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs {
-          system = "aarch64-darwin";
-          config = {
-            allowUnfree = true;
-          };
-        };
+        pkgs = mkPkgs "aarch64-darwin";
         modules = [./hosts/darwin/home.nix];
-        extraSpecialArgs = {inherit pdeconfig;};
+        extraSpecialArgs = hmArgs;
       };
       linux = home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs {
-          system = "x86_64-linux";
-          config = {
-            allowUnfree = true;
-          };
-        };
+        pkgs = mkPkgs "x86_64-linux";
         modules = [./hosts/linux/home.nix];
-        extraSpecialArgs = {inherit pdeconfig;};
+        extraSpecialArgs = hmArgs;
+      };
+    };
+
+    nixosConfigurations = {
+      nixos = nixpkgs-nixos.lib.nixosSystem {
+        modules = [
+          ./hosts/nixos/configuration.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.vince = import ./hosts/nixos/home.nix;
+            };
+          }
+        ];
       };
     };
   };
