@@ -46,23 +46,24 @@
   "command_policies": {
     "commands": {
       "kubectl": {
+        "can_use": ["aws"],
         "from": {
           "session": {
             "sandbox": {
-              "fs_read": ["$HOME/.kube"],
+              "fs_read": ["$HOME/.kube", "/nix/store", "$WORKDIR"],
               "fs_write": ["$HOME/.kube/cache"],
+              "unsafe_macos_seatbelt_rules": ["(allow process-exec* (subpath \"/nix/store\"))"],
               "network": {
                 "allow_all": true
               },
               "environment": {
-                "allow_vars": ["HOME", "PATH", "TERM", "KUBECONFIG"]
+                "allow_vars": ["HOME", "PATH", "TERM", "KUBECONFIG", "AWS_PROFILE", "AWS_REGION", "AWS_DEFAULT_REGION"]
               }
             },
             "invocation_policy": {
               "default": "deny",
               "deny": [
                 {"argv": {"contains": ["--kubeconfig"]}, "reason": "agents stay on the shell's current context with the shell's identity"},
-                {"argv": {"contains": ["--context"]}, "reason": "agents stay on the shell's current context with the shell's identity"},
                 {"argv": {"contains": ["--cluster"]}, "reason": "agents stay on the shell's current context with the shell's identity"},
                 {"argv": {"contains": ["--server"]}, "reason": "agents stay on the shell's current context with the shell's identity"},
                 {"argv": {"contains": ["--token"]}, "reason": "agents stay on the shell's current context with the shell's identity"},
@@ -99,9 +100,28 @@
       },
       "aws": {
         "from": {
+          "kubectl": {
+            "sandbox": {
+              "fs_read": ["$HOME/.aws", "/nix/store", "$WORKDIR"],
+              "fs_write": ["$HOME/.aws/cli/cache", "$HOME/.aws/sso/cache"],
+              "unsafe_macos_seatbelt_rules": ["(allow process-exec* (subpath \"/nix/store\"))"],
+              "network": {
+                "allow_all": true
+              },
+              "environment": {
+                "allow_vars": ["HOME", "PATH", "TERM", "AWS_PROFILE", "AWS_REGION", "AWS_DEFAULT_REGION", "KUBERNETES_EXEC_INFO"]
+              }
+            },
+            "invocation_policy": {
+              "default": "deny",
+              "allow": [
+                {"argv": {"contains": ["eks", "get-token"]}}
+              ]
+            }
+          },
           "session": {
             "sandbox": {
-              "fs_read": ["$HOME/.aws", "/nix/store"],
+              "fs_read": ["$HOME/.aws", "/nix/store", "$WORKDIR"],
               "fs_write": ["$HOME/.aws/cli/cache", "$HOME/.aws/sso/cache"],
               "unsafe_macos_seatbelt_rules": ["(allow process-exec* (subpath \"/nix/store\"))"],
               "network": {
