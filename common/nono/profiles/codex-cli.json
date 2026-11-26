@@ -1,6 +1,6 @@
 {
   "$schema": "https://nono.sh/schemas/nono-profile.schema.json",
-  "extends": ["agent-base", "codex"],
+  "extends": ["agent-base", "nolabs-ai/codex"],
   "meta": {
     "name": "codex-cli",
     "version": "0.1.0",

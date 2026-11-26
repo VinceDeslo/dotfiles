@@ -1,6 +1,6 @@
 {
   "$schema": "https://nono.sh/schemas/nono-profile.schema.json",
-  "extends": ["agent-base", "claude"],
+  "extends": ["agent-base", "nolabs-ai/claude"],
   "meta": {
     "name": "claude-code",
     "version": "0.2.0",

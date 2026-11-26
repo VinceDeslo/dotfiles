@@ -1,6 +1,6 @@
 {
   "$schema": "https://nono.sh/schemas/nono-profile.schema.json",
-  "extends": ["agent-base", "pi"],
+  "extends": ["agent-base", "nolabs-ai/pi"],
   "meta": {
     "name": "pi-cli",
     "version": "0.1.0",
