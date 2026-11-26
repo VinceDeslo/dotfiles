@@ -1,4 +1,5 @@
-{pkgs}:
-with pkgs; [
-  neovim
-]
+{pkgs, ...}: {
+  home.packages = with pkgs; [
+    neovim
+  ];
+}

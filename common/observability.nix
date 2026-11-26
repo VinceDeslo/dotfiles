@@ -1,5 +1,6 @@
-{pkgs}:
-with pkgs; [
-  gcx
-  datadog-pup
-]
+{pkgs, ...}: {
+  home.packages = with pkgs; [
+    gcx
+    datadog-pup
+  ];
+}

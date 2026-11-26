@@ -1,4 +1,5 @@
-{pkgs}:
-with pkgs; [
-  agent-browser
-]
+{pkgs, ...}: {
+  home.packages = with pkgs; [
+    agent-browser
+  ];
+}

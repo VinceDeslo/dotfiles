@@ -1,4 +1,4 @@
-{pkgs}: let
+{pkgs, ...}: let
   kvmPower = pkgs.writeShellApplication {
     name = "kvm-power";
     runtimeInputs = with pkgs; [pass jq coreutils];
@@ -77,4 +77,6 @@
       esac
     '';
   };
-in [kvmPower]
+in {
+  home.packages = [kvmPower];
+}

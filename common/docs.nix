@@ -1,5 +1,6 @@
-{pkgs}:
-with pkgs; [
-  mdbook
-  mdbook-mermaid
-]
+{pkgs, ...}: {
+  home.packages = with pkgs; [
+    mdbook
+    mdbook-mermaid
+  ];
+}

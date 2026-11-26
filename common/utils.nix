@@ -1,21 +1,22 @@
-{pkgs}:
-with pkgs; [
-  bat
-  btop
-  codespell
-  direnv
-  eza
-  fzf
-  ffmpeg
-  glow
-  hyperfine
-  jq
-  just
-  jwt-cli
-  ngrok
-  ripgrep
-  tokei
-  tree
-  yq
-  zoxide
-]
+{pkgs, ...}: {
+  home.packages = with pkgs; [
+    bat
+    btop
+    codespell
+    direnv
+    eza
+    fzf
+    ffmpeg
+    glow
+    hyperfine
+    jq
+    just
+    jwt-cli
+    ngrok
+    ripgrep
+    tokei
+    tree
+    yq
+    zoxide
+  ];
+}

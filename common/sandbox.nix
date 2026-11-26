@@ -1,4 +1,5 @@
-{pkgs}:
-with pkgs; [
-  nono
-]
+{pkgs, ...}: {
+  home.packages = with pkgs; [
+    nono
+  ];
+}

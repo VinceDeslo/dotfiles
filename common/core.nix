@@ -1,4 +1,4 @@
-{pkgs}: let
+{pkgs, ...}: let
   # These tests need the host process table, unreadable from a nix build user.
   worktrunkWithoutHostDependentTests = pkgs.worktrunk.overrideAttrs (old: {
     checkFlags =
@@ -9,8 +9,8 @@
         "--skip=git::repository::tests::start_fsmonitor_daemon_skips_fork_when_daemon_answers"
       ];
   });
-in
-  with pkgs; [
+in {
+  home.packages = with pkgs; [
     zsh
     starship
     git
@@ -22,4 +22,5 @@ in
     openssh
     gnupg
     hunk
-  ]
+  ];
+}
