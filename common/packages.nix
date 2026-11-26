@@ -1,7 +1,6 @@
 {
   imports = [
     ./backend.nix
-    ./cli.nix
     ./cloud.nix
     ./core.nix
     ./docs.nix

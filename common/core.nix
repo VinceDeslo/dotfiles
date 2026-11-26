@@ -22,5 +22,6 @@ in {
     openssh
     gnupg
     hunk
+    _1password-cli
   ];
 }
